@@ -25,7 +25,7 @@ angular.module('jsApp').controller('appController', ['$scope', '$sce', 'wordDisp
 			var offEl = mouseEvent.target;
 			var offX = 0;
 			var offY = 0;
-			if (typeof(offEl.offsetParent) != 'undefined') {
+			if (typeof(offEl.offsetParent) !== 'undefined') {
 				while (offEl) {
 					offX += offEl.offsetLeft;
 					offY += offEl.offsetTop;
@@ -50,7 +50,7 @@ angular.module('jsApp').controller('appController', ['$scope', '$sce', 'wordDisp
 	$scope.onMouseMove = function ($event) {
 		if (!Seeder.common.isDone()) {
 			$scope.onMouseMoveResult = getMouseEventResult($event);
-			var seed = [$scope.onMouseMoveResult.x, $scope.onMouseMoveResult.y, + new Date];
+			var seed = [$scope.onMouseMoveResult.x, $scope.onMouseMoveResult.y, + new Date()];
 			Seeder.common.push(seed);
 			$scope.percentage = Seeder.common.percentage() + '%';
 			$scope.percentageBarStyle = {'width':Seeder.common.percentage() + '%'};
@@ -71,15 +71,15 @@ angular.module('jsApp').controller('appController', ['$scope', '$sce', 'wordDisp
 			this.seeds++;
 		},
 		isDone: function() {
-			if (this.seeds == this.seedLimit) {
+			if (this.seeds === this.seedLimit) {
 				return true;
 			}
 			return false;
 		},
 		percentage: function() {
-			return Math.round((this.seeds / this.seedLimit) * 100)
+			return Math.round((this.seeds / this.seedLimit) * 100);
 		}
-	}
+	};
 
 	var Passphrase = Passphrase || {};
 	Passphrase.common = {
@@ -87,11 +87,11 @@ angular.module('jsApp').controller('appController', ['$scope', '$sce', 'wordDisp
 			this.reset();
 			for (var i = 0; i < wordCount; i++) {
 				var word = wordDispenser.common.getWord();
-				$scope.test[i] = $sce.trustAsHtml("<span class='word'>" + word.word + "<span class='word-color' style='background-color:#" + word.hexColor() + "'></span><span class='word-dice'>" + word.dice() + "</span><span class='word-number'>" + word.number + "</span></span>");
+				$scope.test[i] = $sce.trustAsHtml('<span class=\'word\'>' + word.word + '<span class=\'word-color\' style=\'background-color:#' + word.hexColor() + '\'></span><span class=\'word-dice\'>' + word.dice() + '</span><span class=\'word-number\'>' + word.number + '</span></span>');
 			}
 		},
 		reset: function() {
 			$scope.test = [];
 		}
-	}
+	};
 }]);

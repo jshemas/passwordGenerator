@@ -1,4 +1,4 @@
-angular.module('jsApp', ['gist', 'ngRoute', 'angulartics', 'angulartics.google.analytics']).config(
+angular.module('jsApp', ['ngRoute']).config(
 	[
 		function (
 		) {}

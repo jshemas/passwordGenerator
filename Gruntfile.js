@@ -93,7 +93,6 @@ module.exports = function (grunt) {
 			},
 			pages: {
 				options: {
-					remote: 'omg',
 					remote: 'git@github.com:jshemas/passwordGenerator.git',
 					branch: 'gh-pages'
 				}
