@@ -1,0 +1,23 @@
+<div class='container'>
+	<div class='progress-container'>
+		<p>Move your cursor around to seed the random number generator...</p>
+		<div class='progress' ng-show='displayProgressBar'>
+			<div class='progress-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' ng-style='percentageBarStyle' style='width: 0%'>
+				<span class='sr-only'>{{percentage}}</span>
+			</div>
+		</div>
+	</div>
+	<div>
+		<div class='passphrase'>
+			<div ng-bind-html='generatedWord' ng-repeat='generatedWord in generatedWords'>
+				{{generatedWord}}
+			</div>
+		</div>
+		<div class='btn-group btn-group-justified changeCount' ng-show='displayChangeWordNumber'>
+			<button type='button' class='btn' data-word-count='5'>5 words</button>
+			<button type='button' class='btn' data-word-count='6'>6 words</button>
+			<button type='button' class='btn' data-word-count='7'>7 words</button>
+			<button type='button' class='btn' data-word-count='8'>8 words</button>
+		</div>
+	</div>
+</div>
