@@ -1,0 +1,172 @@
+body {
+	font-family: 'Open Sans',sans-serif;
+	background: #e4e7ec;
+}
+.wrapper {
+	width: 970px;
+	margin: 0 auto;
+}
+
+/* some padding classes */
+.psl {
+	padding-left: 5px;
+}
+.psr {
+	padding-right: 5px;
+}
+.pst {
+	padding-top: 5px;
+}
+.psb {
+	padding-bottom: 5px;
+}
+
+/* some margin classes */
+.msl {
+	margin-left: 5px;
+}
+.msr {
+	margin-right: 5px;
+}
+.mst {
+	margin-top: 5px;
+}
+.msb {
+	margin-bottom: 5px;
+}
+
+/* display none */
+.displayNone {
+	display: none !important;
+}
+
+/* Nav Bar */
+.nav {
+	width: 100%;
+	float: left;
+	margin: 0 0 20px 0;
+	padding: 0;
+	list-style: none;
+	background-color: #fff;
+	border-radius: 3px;
+	border-bottom: 1px solid #ccc;
+	border-top: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+	border-left: 1px solid #ccc;
+}
+.nav li {
+	float: left;
+}
+.nav li a {
+	display: block;
+	padding: 10px 15px;
+	text-decoration: none;
+	font-weight: bold;
+	color: #777;
+	border-right: 1px solid #ccc;
+}
+.nav li a:hover {
+	color: #333;
+	background-color: #f2f2f2;
+}
+
+/* Home Page */
+.home-page img {
+	float: left;
+	margin-right: 20px;
+}
+.home-page h4 {
+	margin-bottom: 5px;
+}
+
+
+body {
+	background-color: rgb(27, 27, 36);
+	color: #fff;
+}
+
+a {
+	color: rgb(124, 118, 184);
+}
+
+code {
+	background-color: inherit;
+}
+
+.btn {
+	background-color: rgb(27, 27, 36);
+	border: 1px solid rgb(121, 123, 137);
+	color: rgb(121, 123, 137);
+}
+
+.btn:hover {
+	border-color: #fff;
+	color: #fff;
+}
+
+footer {
+	color: rgb(121, 123, 137);
+	font-size: 11px;
+}
+
+.progress {
+	background-color: rgb(121, 123, 137);
+}
+
+.progress-bar {
+	background-color: rgb(70, 67, 104);
+}
+
+.seeder {
+	text-align: center;
+	margin-top: 100px;
+	color: rgb(121, 123, 137);
+}
+
+.passphrase {
+	margin-top: 100px;
+	text-align: center;
+}
+
+.passphrase .word {
+	color: #fff;
+	font-size: 28px;
+	text-align: center;
+	display: inline-block;
+	width: 120px;
+	margin-right: 10px;
+}
+
+.passphrase .word .word-color {
+	display: block;
+	height: 5px;
+	background-color: red;
+	margin-top: 10px;
+	border-radius: 3px;
+}
+
+.passphrase .word .word-number {
+	font-size: 11px;
+	color: rgb(122, 122, 138);
+}
+
+.passphrase .word .word-dice {
+	display: block;
+	font-size: 21px;
+	color: rgb(122, 122, 138);
+}
+
+#new_passphrase {
+	margin-top: 100px;
+	text-align: center;
+}
+
+#new_passphrase .btn {
+	width: auto;
+}
+
+#about {
+	position: absolute;
+	bottom: 20px;
+	left: 20px;
+}
