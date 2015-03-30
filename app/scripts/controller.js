@@ -1,8 +1,10 @@
 angular.module('jsApp').controller('appController', ['$scope', '$sce', 'wordDispenser', function ($scope, $sce, wordDispenser) {
 	$scope.onMouseMoveResult = '';
 	$scope.percentage = '0';
+	$scope.displayProgressBar = false;
+	$scope.displayChangeWordNumber = false;
 	$scope.firstTimeOnPage = true;
-	$scope.test = [];
+	$scope.generatedWords = [];
 
 	var getCrossBrowserElementCoords = function (mouseEvent) {
 		var result = {
@@ -48,6 +50,7 @@ angular.module('jsApp').controller('appController', ['$scope', '$sce', 'wordDisp
     };
 
 	$scope.onMouseMove = function ($event) {
+		$scope.displayProgressBar = true;
 		if (!Seeder.common.isDone()) {
 			$scope.onMouseMoveResult = getMouseEventResult($event);
 			var seed = [$scope.onMouseMoveResult.x, $scope.onMouseMoveResult.y, + new Date()];
@@ -87,11 +90,12 @@ angular.module('jsApp').controller('appController', ['$scope', '$sce', 'wordDisp
 			this.reset();
 			for (var i = 0; i < wordCount; i++) {
 				var word = wordDispenser.common.getWord();
-				$scope.test[i] = $sce.trustAsHtml('<span class=\'word\'>' + word.word + '<span class=\'word-color\' style=\'background-color:#' + word.hexColor() + '\'></span><span class=\'word-dice\'>' + word.dice() + '</span><span class=\'word-number\'>' + word.number + '</span></span>');
+				$scope.generatedWords[i] = $sce.trustAsHtml('<span class=\'word\'>' + word.word + '<span class=\'word-color\' style=\'background-color:#' + word.hexColor() + '\'></span><span class=\'word-dice\'>' + word.dice() + '</span><span class=\'word-number\'>' + word.number + '</span></span>');
 			}
+			$scope.displayChangeWordNumber = true;
 		},
 		reset: function() {
-			$scope.test = [];
+			$scope.generatedWords = [];
 		}
 	};
 }]);
