@@ -1,30 +1,7 @@
-// LICENSE (BSD):
-//
-// Copyright 2013 David Bau, all rights reserved.
-//
-// Redistribution and use in source and binary forms, with or without
-// modification, are permitted provided that the following conditions are met:
-//
-// 1. Redistributions of source code must retain the above copyright
-// notice, this list of conditions and the following disclaimer.
-//
-// 2. Redistributions in binary form must reproduce the above copyright
-// notice, this list of conditions and the following disclaimer in the
-// documentation and/or other materials provided with the distribution.
-//
-// 3. Neither the name of this module nor the names of its contributors may
-// be used to endorse or promote products derived from this software
-// without specific prior written permission.
-//
-// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-// "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-// LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
-// A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
-// OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
-// SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
-// LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
-// DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
-// THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-// (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-// OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-(function(global,pool,math,width,chunks,digits){var startdenom=math.pow(width,chunks),significance=math.pow(2,digits),overflow=significance*2,mask=width-1;math["seedrandom"]=function(seed,use_entropy){var key=[];var shortseed=mixkey(flatten(use_entropy?[seed,tostring(pool)]:0 in arguments?seed:autoseed(),3),key);var arc4=new ARC4(key);mixkey(tostring(arc4.S),pool);math["random"]=function(){var n=arc4.g(chunks),d=startdenom,x=0;while(n<significance){n=(n+x)*width;d*=width;x=arc4.g(1);}while(n>=overflow){n/=2;d/=2;x>>>=1;}return(n+x)/d;};return shortseed;};function ARC4(key){var t,keylen=key.length,me=this,i=0,j=me.i=me.j=0,s=me.S=[];if(!keylen){key=[keylen++];}while(i<width){s[i]=i++;}for(i=0;i<width;i++){s[i]=s[j=mask&(j+key[i%keylen]+(t=s[i]))];s[j]=t;}(me.g=function(count){var t,r=0,i=me.i,j=me.j,s=me.S;while(count--){t=s[i=mask&(i+1)];r=r*width+s[mask&((s[i]=s[j=mask&(j+t)])+(s[j]=t))];}me.i=i;me.j=j;return r;})(width);}function flatten(obj,depth){var result=[],typ=(typeof obj)[0],prop;if(depth&&typ=="o"){for(prop in obj){try{result.push(flatten(obj[prop],depth-1));}catch(e){}}}return(result.length?result:typ=="s"?obj:obj+"\0");}function mixkey(seed,key){var stringseed=seed+"",smear,j=0;while(j<stringseed.length){key[mask&j]=mask&((smear^=key[mask&j]*19)+stringseed.charCodeAt(j++));}return tostring(key);}function autoseed(seed){try{global.crypto.getRandomValues(seed=new Uint8Array(width));return tostring(seed);}catch(e){return[+new Date,global,global.navigator.plugins,global.screen,tostring(pool)];}}function tostring(a){return String.fromCharCode.apply(0,a);}mixkey(math.random(),pool);})(this,[],Math,256,6,52);
+// https://github.com/davidbau/seedrandom - release 2.3.11
+// LICENSE (MIT)
+// Copyright 2014 David Bau.
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+// The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+!function(a,b,c,d,e,f,g,h,i){function j(a){var b,c=a.length,e=this,f=0,g=e.i=e.j=0,h=e.S=[];for(c||(a=[c++]);d>f;)h[f]=f++;for(f=0;d>f;f++)h[f]=h[g=t&g+a[f%c]+(b=h[f])],h[g]=b;(e.g=function(a){for(var b,c=0,f=e.i,g=e.j,h=e.S;a--;)b=h[f=t&f+1],c=c*d+h[t&(h[f]=h[g=t&g+b])+(h[g]=b)];return e.i=f,e.j=g,c})(d)}function k(a,b){return b.i=a.i,b.j=a.j,b.S=a.S.slice(),b}function l(a,b){var c,d=[],e=typeof a;if(b&&"object"==e)for(c in a)try{d.push(l(a[c],b-1))}catch(f){}return d.length?d:"string"==e?a:a+"\0"}function m(a,b){for(var c,d=a+"",e=0;e<d.length;)b[t&e]=t&(c^=19*b[t&e])+d.charCodeAt(e++);return o(b)}function n(c){try{return p?o(p.randomBytes(d)):(a.crypto.getRandomValues(c=new Uint8Array(d)),o(c))}catch(e){return[+new Date,a,(c=a.navigator)&&c.plugins,a.screen,o(b)]}}function o(a){return String.fromCharCode.apply(0,a)}var p,q=c.pow(d,e),r=c.pow(2,f),s=2*r,t=d-1,u=c["seed"+i]=function(a,f,g){var h=[];f=1==f?{entropy:!0}:f||{};var p=m(l(f.entropy?[a,o(b)]:null==a?n():a,3),h),t=new j(h);return m(o(t.S),b),(f.pass||g||function(a,b,d,e){return e&&(e.S&&k(e,t),a.state=function(){return k(t,{})}),d?(c[i]=a,b):a})(function(){for(var a=t.g(e),b=q,c=0;r>a;)a=(a+c)*d,b*=d,c=t.g(1);for(;a>=s;)a/=2,b/=2,c>>>=1;return(a+c)/b},p,"global"in f?f.global:this==c,f.state)};if(m(c[i](),b),g&&g.exports){g.exports=u;try{p=require("crypto")}catch(v){}}else h&&h.amd&&h(function(){return u})}(this,[],Math,256,6,52,"object"==typeof module&&module,"function"==typeof define&&define,"random");
