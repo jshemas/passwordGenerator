@@ -106,7 +106,6 @@ module.exports = function (grunt) {
 					'package.json',
 					'app/scripts/*.js',
 					'app/styles/*.css',
-					'app/views/*.html',
 					'app/*.html'
 				],
 				tasks: [

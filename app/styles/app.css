@@ -40,30 +40,49 @@ body {
 	display: none !important;
 }
 
+/* buttons */
+.btn {
+	color: #808080;
+	background-color: #fff;
+	border-color: #ccc;
+	display: inline-block;
+	padding: 6px 12px;
+	font-size: 14px;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	border: 1px solid transparent;
+	border-radius: 4px;
+}
+
 /* progress bar */
-.progress-container {
+.progress-bar-container {
 	text-align: center;
 	margin-top: 100px;
 	color: #808080;
 }
-.progress {
-	margin-top: 10px;
-	color: #fff;
+.progress-bar-container p {
+	margin-bottom: 10px;
+}
+.progress-bar-container div {
+	height: 16px;
 }
 .progress-bar {
+	color: #fff;
 	background-color: #337ab7;
+	width: 0%;
 }
 
-/* generated passphrase */
-.passphrase {
+/* generated passwords */
+.generated-words {
 	min-height: 100%;
-	margin: 100px auto 0 auto;
+	margin: 50px auto 0 auto;
 	width: 81%;
 }
-.passphrase div {
+.generated-words div {
 	float: left;
 }
-.passphrase .word {
+.generated-words .word {
 	color: #808080;
 	font-size: 28px;
 	text-align: center;
@@ -71,18 +90,18 @@ body {
 	width: 120px;
 	margin-right: 10px;
 }
-.passphrase .word .word-color {
+.generated-words .word .word-color {
 	display: block;
 	height: 5px;
 	background-color: #808080;
 	margin-top: 10px;
 	border-radius: 3px;
 }
-.passphrase .word .word-number {
+.generated-words .word .word-number {
 	font-size: 11px;
 	color: #808080;
 }
-.passphrase .word .word-dice {
+.generated-words .word .word-dice {
 	display: block;
 	font-size: 21px;
 	color: #808080;
@@ -92,4 +111,12 @@ body {
 .changeCount {
 	padding-top: 125px;
 	text-align: center;
+}
+
+/* app description */
+.description p {
+	color: #808080;
+	text-align: center;
+	width: 80%;
+	margin: 15px auto 0 auto;
 }

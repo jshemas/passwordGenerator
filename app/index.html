@@ -31,30 +31,27 @@
 			<script src='/lib/json3.min.js'></script>
 		<![endif]-->
 		<div class='wrapper'>
-			<div data-ui-view data-ng-view='ng-view'>
-				<div class='container'>
-					<div class='progress-container'>
-						<p>Move your cursor around to seed the random number generator...</p>
-						<div class='progress' ng-show='displayProgressBar'>
-							<div class='progress-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' ng-style='percentageBarStyle' style='width: 0%'>
-								<span class='sr-only'>{{percentage}}</span>
-							</div>
-						</div>
-					</div>
-					<div>
-						<div class='passphrase'>
-							<div ng-bind-html='generatedWord' ng-repeat='generatedWord in generatedWords'>
-								{{generatedWord}}
-							</div>
-						</div>
-						<div class='btn-group btn-group-justified changeCount' ng-show='displayChangeWordNumber'>
-							<button type='button' class='btn' data-word-count='5'>5 words</button>
-							<button type='button' class='btn' data-word-count='6'>6 words</button>
-							<button type='button' class='btn' data-word-count='7'>7 words</button>
-							<button type='button' class='btn' data-word-count='8'>8 words</button>
-						</div>
+			<div class='progress-bar-container'>
+				<p>Generating some randomness, please move your mouse around till the bar reaches 100%</p>
+				<div>
+					<div class='progress-bar' ng-style='percentageBarStyle' ng-show='displayProgressBar'>
+						<span>{{percentage}}</span>
 					</div>
 				</div>
+			</div>
+			<div class='generated-words'>
+				<div ng-bind-html='generatedWord' ng-repeat='generatedWord in generatedWords'>
+					{{generatedWord}}
+				</div>
+			</div>
+			<div class='changeCount' ng-show='displayChangeWordNumber'>
+				<button type='button' class='btn' data-count='5'>5 words</button>
+				<button type='button' class='btn' data-count='6'>6 words</button>
+				<button type='button' class='btn' data-count='7'>7 words</button>
+				<button type='button' class='btn' data-count='8'>8 words</button>
+			</div>
+			<div class='description'>
+				<p>This is a simple password generator that uses the <a href="http://en.wikipedia.org/wiki/Diceware">Diceware</a> method to generate secure passphrases. If you need to generate a secure passphrase, an easy and secure method is to use dice. This uses a large list of words and a set of dice. It shakes the dices and look up the word that was selected.</p>
 			</div>
 		</div>
 	</body>
