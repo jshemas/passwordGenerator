@@ -1,4 +1,4 @@
-angular.module('jsApp').factory('wordDispenser', [function () {
+angular.module('passwordGenerator').factory('wordDispenser', [function () {
 	function Word(word, number) {
 		this.word   = word;
 		this.number = number;

@@ -1,4 +1,4 @@
-angular.module('jsApp', []).config(
+angular.module('passwordGenerator', []).config(
 	[
 		function (
 		) {}

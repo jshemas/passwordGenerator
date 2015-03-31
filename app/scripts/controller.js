@@ -1,4 +1,4 @@
-angular.module('jsApp').controller('appController', ['$scope', '$sce', 'wordDispenser', function ($scope, $sce, wordDispenser) {
+angular.module('passwordGenerator').controller('appController', ['$scope', '$sce', 'wordDispenser', function ($scope, $sce, wordDispenser) {
 	$scope.onMouseMoveResult = '';
 	$scope.percentage = '0';
 	$scope.displayProgressBar = false;
